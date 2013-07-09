@@ -1,0 +1,22 @@
+{
+  "name": "chef-client",
+  "description": "Configure a chef client",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "chef_client": {
+      "interval": 1800,
+      "server_url": "https://api.opscode.com/organizations/habitrpg",
+      "validation_client_name": "habitrpg-validator"
+    }
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[chef-client::delete_validation]",
+    "recipe[chef-client::service]",
+    "recipe[chef-client::config]"
+  ],
+  "env_run_lists": {
+  }
+}

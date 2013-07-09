@@ -1,0 +1,21 @@
+{
+  "name": "logrotate",
+  "description": "Install logrotate and global configure",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "logrotate": {
+      "global": {
+        "compress": true,
+        "nocompress": false
+      }
+    }
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[logrotate]"
+  ],
+  "env_run_lists": {
+  }
+}

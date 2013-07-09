@@ -1,0 +1,67 @@
+{
+  "name": "habitrpg",
+  "description": "HabitRPG web server, soup to nuts",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[chef-client]",
+    "role[ntp]",
+    "role[users]",
+    "role[git]",
+    "role[logrotate]",
+    "role[nginx]",
+    "role[nodejs]",
+    "recipe[habitrpg::user]",
+    "recipe[habitrpg::forever]",
+    "recipe[habitrpg::control]",
+    "recipe[habitrpg::code]",
+    "recipe[habitrpg::logrotate]",
+    "recipe[habitrpg::web]",
+    "recipe[habitrpg::packages]",
+    "recipe[habitrpg::restart]"
+  ],
+  "env_run_lists": {
+      "vagrant": [
+          "role[chef-client]",
+          "role[ntp]",
+          "role[users]",
+          "role[git]",
+          "role[logrotate]",
+          "role[nginx]",
+          "role[nodejs]",
+          "role[redis]",
+          "role[mongodb]",
+          "recipe[habitrpg::user]",
+          "recipe[habitrpg::forever]",
+          "recipe[habitrpg::control]",
+          "recipe[habitrpg::code]",
+          "recipe[habitrpg::logrotate]",
+          "recipe[habitrpg::web]",
+          "recipe[habitrpg::packages]",
+          "recipe[habitrpg::restart]"
+      ],
+      "upgrade": [
+          "role[chef-client]",
+          "role[ntp]",
+          "role[users]",
+          "role[git]",
+          "role[logrotate]",
+          "role[nginx]",
+          "role[nodejs]",
+          "role[redis]",
+          "role[mongodb]",
+          "recipe[habitrpg::user]",
+          "recipe[habitrpg::forever]",
+          "recipe[habitrpg::control]",
+          "recipe[habitrpg::code]",
+          "recipe[habitrpg::logrotate]",
+          "recipe[habitrpg::web]",
+          "recipe[habitrpg::packages]",
+          "recipe[habitrpg::restart]"
+      ]
+  }
+}

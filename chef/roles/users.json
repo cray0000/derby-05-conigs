@@ -1,0 +1,25 @@
+{
+  "name": "users",
+  "description": "Set up users that should be on all servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "authorization": {
+      "sudo": {
+        "include_sudoers_d": true,
+        "agent_forwarding": true,
+        "groups": [
+          "sysadmin"
+        ]
+      }
+    }
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[sudo]",
+    "recipe[users::sysadmins]"
+  ],
+  "env_run_lists": {
+  }
+}

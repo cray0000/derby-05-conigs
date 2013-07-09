@@ -1,0 +1,31 @@
+{
+  "name": "redis",
+  "description": "Install Redis",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+      "redisio": {
+          "default_settings": {
+              "logfile": "/var/log/redis.out",
+              "backuptype": "aof",
+              "appendfsync": "always"
+          }
+      },
+      "sysctl": {
+        "params": {
+            "vm": {
+                "overcommit_memory": 1
+            }
+        }
+      }
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[sysctl]",
+    "recipe[redisio::install]",
+    "recipe[redisio::enable]"
+  ],
+  "env_run_lists": {
+  }
+}

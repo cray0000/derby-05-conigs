@@ -1,0 +1,38 @@
+{
+  "name": "nginx",
+  "description": "Install Nginx",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "nginx": {
+      "default_site_enabled": false,
+      "gzip_comp_level": "6",
+      "gzip_vary": "on",
+      "gzip_buffers": "16 8k",
+      "worker_rlimit_nofile": 61504,
+      "worker_connections": 10240,
+      "install_method": "source",
+      "init_style": "init",
+      "source": {
+        "version": "1.5.2",
+        "sbin_path": "/usr/sbin/nginx"
+      }
+    },
+    "sysctl": {
+      "params": {
+          "fs": {
+            "file-max": 102400
+          }
+      }
+    }
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[sysctl]",
+    "recipe[nginx]",
+    "recipe[habitrpg::logrotate_nginx]"
+  ],
+  "env_run_lists": {
+  }
+}

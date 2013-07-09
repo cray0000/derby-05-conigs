@@ -1,0 +1,21 @@
+{
+  "name": "nodejs",
+  "description": "Install Node.js and npm",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "nodejs": {
+      "version": "0.8.25",
+      "legacy_packages": true
+    }
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[nodejs]",
+    "recipe[nodejs::install_from_source]",
+    "recipe[nodejs::npm]"
+  ],
+  "env_run_lists": {
+  }
+}
